@@ -30,6 +30,32 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_numToken",
+						"type": "uint256"
+					}
+				],
+				"name": "CompraToken",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "balanceOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "owner",
 				"outputs": [
@@ -87,11 +113,11 @@
 			]
 		},
 		"Dinsey/dinsey.sol": {
-			"keccak256": "0x0d2e85ecfa884646d3a1224d563d521589260ea028403aaf6b1b83bce7d7f94f",
+			"keccak256": "0x9bcf9cc7cd6fd97f4edc9d46b69ba306cf5dda671a17a15af950e4e481ca4b91",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a547f04262d3d95ca7714a30378d9d327561b742ca1c862b10a93190a5aeb773",
-				"dweb:/ipfs/QmRMS4vot2V7EicPtPBXyYF2nBynQTwUjWsGyu67AFxudG"
+				"bzz-raw://3c3f14739e9442db367ab74acaea6ba104302930fbd742b8a5d43014099a1274",
+				"dweb:/ipfs/QmQQhEok7XHFKgBbAVznbrfCmXgtK5goYJ4VLyh4iCV9Hx"
 			]
 		}
 	},

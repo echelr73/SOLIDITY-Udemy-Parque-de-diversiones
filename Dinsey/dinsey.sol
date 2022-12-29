@@ -33,4 +33,27 @@ contract Dinsey{
         //Devuelve la conversion de token a ether 1 token= 1 ether
         return _numToken * (1 ether);
     }
+
+    // Funcion para comprar token
+    function CompraToken(uint _numToken) public payable{
+        // Establecer el precio de lo token
+        uint coste = PrecioToken(_numToken);
+        // Se evalua el dinero que el cliente paga por los tokens
+        require (msg.value >= coste, "Compra menos Tokens o paga con mas ethers.");
+        // Diferencia de lo que el cliente paga
+        uint returnValue = msg.value - coste;
+        //Dinsey retorna la cantidad de ethers al cliente
+        payable(msg.sender).transfer(returnValue);
+        // Obtencion del numero de token disponible
+        uint Balance = balanceOf();
+        require(_numToken <= Balance, "Compra un numero menor de Tokens");
+        // se transfiere el numero de tokens al cliente
+        token.transfer(msg.sender, _numToken);
+        // Registro de clos tokens comprados
+        Clientes[msg.sender].tokens_comprados = _numToken;
+    }
+
+    function balanceOf() public view returns (uint){
+        return token.balanceOf(address(this));
+    }
 }
