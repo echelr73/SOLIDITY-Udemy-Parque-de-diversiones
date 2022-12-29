@@ -4,7 +4,45 @@
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [],
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "Clientes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokens_comprados",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
@@ -49,11 +87,11 @@
 			]
 		},
 		"Dinsey/dinsey.sol": {
-			"keccak256": "0x8da4b097add7e5872f228a23b7ce0bc7c5b65601bb463a28f4a8d37ec7108b85",
+			"keccak256": "0x1677fc7dbda6939584c6c31ae0dfa700eefcb73b1a8921ad6c920ce0f38af676",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://cc41ddd75abda341e317d96dd568efb64e5983955e153feb01cb71204df45889",
-				"dweb:/ipfs/QmZMHSPgaGNhFJKWJvet2YQ6VunzdtYo8ePT7WqB7Yr5YC"
+				"bzz-raw://026c56cd7e01c36455f14812d8e9c47a7329f80153f717797d883d1c1621b06c",
+				"dweb:/ipfs/QmP7K4fG3KU1rXjaCiNtnGrVfCmqUUWguFzgBbDwygBwvY"
 			]
 		}
 	},
