@@ -1,0 +1,61 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Dinsey/dinsey.sol": "Dinsey"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Dinsey/ERC20.sol": {
+			"keccak256": "0x171967a07bf4782d64a057d860e2460d8ae60e300ee697a4e91f3ba663c76968",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://28d3e85fa44b2c11d7b9106789832a241447431f8d32f423fe43a65dad4a2b20",
+				"dweb:/ipfs/QmbPzSjoZiv6KDuBMhVyw1bc1RfLDMdLab2XymhdZtZBg7"
+			]
+		},
+		"Dinsey/SafeMath.sol": {
+			"keccak256": "0x138fb5f17ab6a846e82624e040db1ba885a48b8f4782f19af2e29358620ad1d9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bcb863b1deb67c72ecbfde79f1e41cdefe39c2a83fe37b4c48e2a43256f48df7",
+				"dweb:/ipfs/QmbuEAjiZGcN4tvYmmQi3VenWTKz6WKDwV3QSUzhG63CHv"
+			]
+		},
+		"Dinsey/dinsey.sol": {
+			"keccak256": "0x8da4b097add7e5872f228a23b7ce0bc7c5b65601bb463a28f4a8d37ec7108b85",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cc41ddd75abda341e317d96dd568efb64e5983955e153feb01cb71204df45889",
+				"dweb:/ipfs/QmZMHSPgaGNhFJKWJvet2YQ6VunzdtYo8ePT7WqB7Yr5YC"
+			]
+		}
+	},
+	"version": 1
+}
