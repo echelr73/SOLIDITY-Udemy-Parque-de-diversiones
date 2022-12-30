@@ -53,7 +53,25 @@ contract Dinsey{
         Clientes[msg.sender].tokens_comprados = _numToken;
     }
 
+    // Balance de token  del contrato dinsey
     function balanceOf() public view returns (uint){
         return token.balanceOf(address(this));
     }
+
+    // Para visualizar la cantidad de token restantes de un cliente
+    function MisToken() public view returns(uint){
+        return token.balanceOf(msg.sender);
+    }
+
+    // Funciona para generar mas token
+    function GeneraToken(uint _numTokens) public Unicamente(msg.sender){
+        token.increaseTotalSupply(_numTokens);
+    }
+
+    //Modificador para controlar las funciones ejecutables por dinsey
+    modifier Unicamente(address _direccion){
+        require(_direccion == owner, "No tienes permisos para ejecutar esta funcion");
+        _;
+    }
+
 }

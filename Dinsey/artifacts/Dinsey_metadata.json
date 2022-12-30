@@ -43,6 +43,32 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_numTokens",
+						"type": "uint256"
+					}
+				],
+				"name": "GeneraToken",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "MisToken",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "balanceOf",
 				"outputs": [
@@ -113,11 +139,11 @@
 			]
 		},
 		"Dinsey/dinsey.sol": {
-			"keccak256": "0x9bcf9cc7cd6fd97f4edc9d46b69ba306cf5dda671a17a15af950e4e481ca4b91",
+			"keccak256": "0x436badbb6d9734c08aa23018fab555c34565032e6cd1e0a325ed8613d498ef9d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3c3f14739e9442db367ab74acaea6ba104302930fbd742b8a5d43014099a1274",
-				"dweb:/ipfs/QmQQhEok7XHFKgBbAVznbrfCmXgtK5goYJ4VLyh4iCV9Hx"
+				"bzz-raw://59d0e90c8150921459e28933856b6ab88c7fcac4c2edc79e9dfadd366f340a82",
+				"dweb:/ipfs/Qmdt2PtiDc1nfvAMyNUebgFiZX252kC1CEWMDEp31pHG5Y"
 			]
 		}
 	},
