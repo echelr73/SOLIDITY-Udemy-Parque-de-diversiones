@@ -56,6 +56,19 @@
 				"type": "event"
 			},
 			{
+				"inputs": [],
+				"name": "AtraccionesDisponibles",
+				"outputs": [
+					{
+						"internalType": "string[]",
+						"name": "",
+						"type": "string[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "string",
@@ -244,11 +257,11 @@
 			]
 		},
 		"Dinsey/dinsey.sol": {
-			"keccak256": "0x44789fbce3893ce31f2ec6fdd136fc2c8ca28c97fa6d22c756d952047065a340",
+			"keccak256": "0x235ee641414cfd6ffd1775dcd1ca2369ade6a45dba268a03f30cd88888404ae4",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://219e0f8aa234338d87b5f1aee222c567a75941acc4129a014e596b5e0ed278cb",
-				"dweb:/ipfs/QmQW8x9P2cBx8egNLB3hJuGvCZuMNkAEn4qcMjcxBiCjeA"
+				"bzz-raw://2651128c97262b55c2758c340c2210ae822a105cf91a06afcfa7d69224a2b0af",
+				"dweb:/ipfs/QmQ7xVcCMzBgj5YfipzaYJVT1vrQr2adrweS5g4Hp9DkyZ"
 			]
 		}
 	},

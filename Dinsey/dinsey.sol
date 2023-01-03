@@ -107,12 +107,43 @@ contract Dinsey{
         emit nueva_atraccion(_nombreAtraccion, _precio);
     }
 
-    //Dar de baja una atracciones en Dinsey (Deberia mejorarse para que sole se de baja a atracciones existentes
-    function BajaAtraccion(string memory _nombreAtraccion) public Unicamente(msg.sender){
+    //Dar de baja una atracciones en Dinsey
+    function BajaAtraccion(string memory _nombreAtraccion) public Unicamente(msg.sender) AtraccionCorrecta(_nombreAtraccion){
         //El estado de la atraccion pasa a FALSE 
         MappingAtracciones[_nombreAtraccion].estado_atraccion = false;
         //Emitir el evento de baja de atracciones
         emit baja_atraccion(_nombreAtraccion);
     }
 
+    //Verifica que la atraccion este en la lista
+    modifier AtraccionCorrecta(string memory _nombre){
+        //Se calcula el hash de la atraccion
+        bytes32 hash_Atraccion = keccak256(abi.encodePacked(_nombre));
+        //Inicializacion de la variable 
+        bool atraccionEncontrada = false;
+
+        //Se recorre el arreglo para verificar si el nombre de la atraccion es correcta
+        for(uint i=0; i<Atracciones.length; i++){
+            //Se compara el hash de la lista de atracciones con el hash de la atraccion ingresada
+            if(keccak256(abi.encodePacked(Atracciones[i])) == hash_Atraccion){
+                atraccionEncontrada = true;
+            }
+        }
+        //Si el parametro ingresado no se encuentra en la lista falla
+        require(atraccionEncontrada, "No se encuentra la atraccion");
+        _;
+    }
+
+    //Visualizar las atracciones de Dinsey
+    function AtraccionesDisponibles() public view returns(string [] memory){
+        return Atracciones;
+    }
+
+    //Funciones para subirse a una atraccion de Dinsey y pagar con tokens
+    //function SubirAtraccion(string memory _nombreAtraccion) public {
+        //Precio de la atraccion en tokens
+      //  uint tokens_atraccion = MappingAtracciones[_nombreAtraccion].precio_atraccion;
+        //Verifica el estado de la atraccion
+        //require (MappingAtracciones[_nombreAtraccion].estado_atraccion == true, "La atraccion no esta disponible en estos momentos.");
+    //}
 }
