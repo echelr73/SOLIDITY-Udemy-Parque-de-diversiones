@@ -165,4 +165,16 @@ contract Dinsey{
     function Historial() public view returns (string [] memory){
         return HistorialAtracciones[msg.sender];
     }
+
+    //Funcion para que un cliente de Dinsey pueda devolver Tokens al irse
+    function DevolverTokens (uint _numTokens) public payable {
+        //El numero de tokens a devolver es positivo
+        require (_numTokens > 0, "Necesitas devolver una cantidad positiva de tokens.");
+        //El usuario debe tener el numero de tokens que desea devolver
+        require(_numTokens <= MisToken(), "No tienes los tokens que deseas devolver.");
+        //El cliente devuelve los tokens
+        token.transfer_dinsey(msg.sender, address(this), _numTokens);
+        //Devolucion de ethers al cliente
+        payable(msg.sender).transfer(PrecioToken(_numTokens));
+    }
 }
