@@ -80,6 +80,10 @@ contract Dinsey{
     event disfrutar_atraccion(string, uint, address);
     event nueva_atraccion(string, uint);
     event baja_atraccion(string);
+    event nuevo_menu(string, uint);
+    event quitar_menu(string);
+    event compro_menu(string, uint, address);
+
 
     //Estructura de datos de la atraccion
     struct atraccion{
@@ -88,14 +92,30 @@ contract Dinsey{
         bool estado_atraccion;
     }
 
+    //Estructura de datos de los menus
+    struct menu{
+        string nombre_menu;
+        uint precio_menu;
+        bool estado_menu;
+    }
+
     //Mapping para relacionar un nombre de una atraccion con una estructura de datos de una atraccion
     mapping (string => atraccion) public MappingAtracciones;
+
+    //Mapping de menus
+    mapping (string => menu) public MappingMenus;
     
     //Array de almacenamiento de nombre de atracciones
     string [] Atracciones;
 
+    //Array de menus
+    string [] Menus;
+
     // Mapping para relacionar una identidad (cliente) con su historial en Dinsey
     mapping (address => string[]) HistorialAtracciones;
+
+    //Mapping para relacionar un ckliente con su historial de menus
+    mapping (address => string []) HistorialMenus;
 
     //Nos permite crear nuevas atracciones para Dinsey(Solo es ejecutado por Dinsey)
     function NuevaAtraccion(string memory _nombreAtraccion, uint _precio) public Unicamente(msg.sender){
@@ -105,6 +125,15 @@ contract Dinsey{
         Atracciones.push(_nombreAtraccion);
         //Emision del evento para la nueva atraccion
         emit nueva_atraccion(_nombreAtraccion, _precio);
+    }
+
+    //Nos permite crear un menu
+    function NuevoMenu(string memory _nombreMenu, uint _precio) public Unicamente(msg.sender){
+        //Creacion de menu
+        MappingMenus[_nombreMenu] = menu(_nombreMenu, _precio, true);
+        //Almacenar en el arreglo de menus
+        Menus.push(_nombreMenu);
+        emit nuevo_menu(_nombreMenu, _precio);
     }
 
     //Dar de baja una atracciones en Dinsey
@@ -134,9 +163,41 @@ contract Dinsey{
         _;
     }
 
+    //Quitar un menu
+    function QuitarMenu(string memory _nombreMenu) public Unicamente(msg.sender) MenuCorrecto(_nombreMenu){
+        //El estado del menu pasa a false
+        MappingMenus[_nombreMenu].estado_menu = false;
+        //Emitir el evento de baja de menu
+        emit quitar_menu(_nombreMenu);
+    }
+
+    //Verifica que el menu este en la lista
+    modifier MenuCorrecto(string memory _nombre){
+        //Se calcula el hash del menu
+        bytes32 hash_Menu = keccak256(abi.encodePacked(_nombre));
+        //Inicializacion de la variable 
+        bool menuEncontrado = false;
+
+        //Se recorre el arreglo para verificar si el nombre del menu es correcto
+        for(uint i=0; i<Menus.length; i++){
+            //Se compara el hash de la lista de menus con el hash del menu ingresado
+            if(keccak256(abi.encodePacked(Menus[i])) == hash_Menu){
+                menuEncontrado = true;
+            }
+        }
+        //Si el parametro ingresado no se encuentra en la lista falla
+        require(menuEncontrado, "No se encuentra el menu");
+        _;
+    }
+
     //Visualizar las atracciones de Dinsey
     function AtraccionesDisponibles() public view returns(string [] memory){
         return Atracciones;
+    }
+
+    //Visualizar las Menus de Dinsey
+    function MenusDisponibles() public view returns(string [] memory){
+        return Menus;
     }
 
     //Funciones para subirse a una atraccion de Dinsey y pagar con tokens
@@ -161,9 +222,30 @@ contract Dinsey{
         emit disfrutar_atraccion(_nombreAtraccion, tokens_atraccion, msg.sender);
     }
 
+    //Funcion para comprar un menu
+    function ComprarMenu(string memory _nombreMenu) public {
+        //Precio del menu en tokens
+        uint tokens_menu = MappingMenus[_nombreMenu].precio_menu;
+        //Verificar el estado del menu
+        require (MappingMenus[_nombreMenu].estado_menu == true, "El menu no esta disponible en estos momentos");
+        //Verificar el numero de tokens del cliente
+        require (tokens_menu <= MisToken(), "No tiene la cantidad necesario de tokens para comprar el menu");
+        //Se transfieren los tokens del cliente a la direccion del contrato
+        token.transfer_dinsey(msg.sender, address(this), tokens_menu);
+        //Se almacerna la compra en el historial del cliente
+        HistorialMenus[msg.sender].push(_nombreMenu);
+        //Se emite un evento por la compra de un menu
+        emit compro_menu(_nombreMenu, tokens_menu, msg.sender);
+    }
+
     //Visualizar eñ historial completo de atracciones disfrutadas por un cliente
     function Historial() public view returns (string [] memory){
         return HistorialAtracciones[msg.sender];
+    }
+
+    //Visualizar eñ historial completo de menus comprados por un cliente
+    function HistorialMenu() public view returns (string [] memory){
+        return HistorialMenus[msg.sender];
     }
 
     //Funcion para que un cliente de Dinsey pueda devolver Tokens al irse
