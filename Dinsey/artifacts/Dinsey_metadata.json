@@ -187,6 +187,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_nombreAtraccion",
+						"type": "string"
+					}
+				],
+				"name": "SubirAtraccion",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "balanceOf",
 				"outputs": [
@@ -257,11 +270,11 @@
 			]
 		},
 		"Dinsey/dinsey.sol": {
-			"keccak256": "0x235ee641414cfd6ffd1775dcd1ca2369ade6a45dba268a03f30cd88888404ae4",
+			"keccak256": "0x0907ae8ad1b9ef64fc489ef7213a00585b467782550e78e902e97ee4e7166765",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2651128c97262b55c2758c340c2210ae822a105cf91a06afcfa7d69224a2b0af",
-				"dweb:/ipfs/QmQ7xVcCMzBgj5YfipzaYJVT1vrQr2adrweS5g4Hp9DkyZ"
+				"bzz-raw://3b467f18fc8b9876b92512aa6e9e902d3a3d06892d940ecf831169dd6640b3c3",
+				"dweb:/ipfs/QmSLwViiLRvK7NFeuKRe2Ax9JkMRkFVH38btffXbeD5jYg"
 			]
 		}
 	},

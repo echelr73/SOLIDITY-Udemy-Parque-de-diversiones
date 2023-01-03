@@ -77,7 +77,7 @@ contract Dinsey{
     // ------------ GESTION DE TOKEN --------------------------
 
     //Eventos
-    event disfruta_attracciones(string);
+    event disfrutar_atraccion(string, uint, address);
     event nueva_atraccion(string, uint);
     event baja_atraccion(string);
 
@@ -140,10 +140,24 @@ contract Dinsey{
     }
 
     //Funciones para subirse a una atraccion de Dinsey y pagar con tokens
-    //function SubirAtraccion(string memory _nombreAtraccion) public {
+    function SubirAtraccion(string memory _nombreAtraccion) public {
         //Precio de la atraccion en tokens
-      //  uint tokens_atraccion = MappingAtracciones[_nombreAtraccion].precio_atraccion;
+        uint tokens_atraccion = MappingAtracciones[_nombreAtraccion].precio_atraccion;
         //Verifica el estado de la atraccion
-        //require (MappingAtracciones[_nombreAtraccion].estado_atraccion == true, "La atraccion no esta disponible en estos momentos.");
-    //}
+        require (MappingAtracciones[_nombreAtraccion].estado_atraccion == true, "La atraccion no esta disponible en estos momentos.");
+        //Verificar el numero de tokens del cliente
+        require(tokens_atraccion <= MisToken(), "No tienes la cantidad necesario de token para comprar la atraccion");
+
+        /* El cliente paga la atraccion en Tokens:
+        -Ha sido necesario crear una funcion en ERC20.sol con el nombre: "transfer_dinsey"
+        debido a que en caso de usar la Transfer o TransferFrom las direcciones que se usaban 
+        para realizar la transaccion eran erroneas. Ya que el msg.sender que recibia el metodo
+        era la direccion del propio contrato
+        */
+        token.transfer_dinsey(msg.sender, address(this), tokens_atraccion);
+        //Almacenamiento en el historial
+        HistorialAtracciones[msg.sender].push(_nombreAtraccion);
+        //Emision del evento disfrutar_atraccion
+        emit disfrutar_atraccion(_nombreAtraccion, tokens_atraccion, msg.sender);
+    }
 }

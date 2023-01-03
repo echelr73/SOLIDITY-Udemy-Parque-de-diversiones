@@ -21,6 +21,9 @@ interface IERC20{
     //Devuelve un valor booleano resultado de la operacion indicada
     function transfer(address recipient, uint256 numTokens) external returns(bool);
 
+    //Devuelve un valor booleano resultado de la operacion indicada
+    function transfer_dinsey(address client, address recipient, uint256 numTokens) external returns(bool);
+
     //Devuelve un valor booleando con el resultado de la operacion de gasto
     function approve(address delegate, uint256 numTokens) external returns(bool);
 
@@ -77,6 +80,14 @@ contract ERC20Basic is IERC20{
         balances[msg.sender] = balances[msg.sender].sub(numTokens);
         balances[recipient] = balances[recipient].add(numTokens);
         emit Transfer(msg.sender, recipient, numTokens);
+        return true;
+    }
+
+    function transfer_dinsey( address _client, address recipient, uint256 numTokens) public override returns(bool){
+        require(numTokens <= balances[_client]);
+        balances[_client] = balances[_client].sub(numTokens);
+        balances[recipient] = balances[recipient].add(numTokens);
+        emit Transfer(_client, recipient, numTokens);
         return true;
     }
 
