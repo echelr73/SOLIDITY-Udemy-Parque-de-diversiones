@@ -160,4 +160,9 @@ contract Dinsey{
         //Emision del evento disfrutar_atraccion
         emit disfrutar_atraccion(_nombreAtraccion, tokens_atraccion, msg.sender);
     }
+
+    //Visualizar eñ historial completo de atracciones disfrutadas por un cliente
+    function Historial() public view returns (string [] memory){
+        return HistorialAtracciones[msg.sender];
+    }
 }
