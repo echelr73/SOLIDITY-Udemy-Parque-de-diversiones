@@ -50,7 +50,7 @@ contract Dinsey{
         // se transfiere el numero de tokens al cliente
         token.transfer(msg.sender, _numToken);
         // Registro de clos tokens comprados
-        Clientes[msg.sender].tokens_comprados = _numToken;
+        Clientes[msg.sender].tokens_comprados += _numToken;
     }
 
     // Balance de token  del contrato dinsey
@@ -72,6 +72,39 @@ contract Dinsey{
     modifier Unicamente(address _direccion){
         require(_direccion == owner, "No tienes permisos para ejecutar esta funcion");
         _;
+    }
+
+    // ------------ GESTION DE TOKEN --------------------------
+
+    //Eventos
+    event disfruta_attracciones(string);
+    event nueva_atraccion(string, uint);
+    event baja_atraccion(string);
+
+    //Estructura de datos de la atraccion
+    struct atraccion{
+        string nombre_atraccion;
+        uint precio_atraccion;
+        bool estado_atraccion;
+    }
+
+    //Mapping para relacionar un nombre de una atraccion con una estructura de datos de una atraccion
+    mapping (string => atraccion) public MappingAtracciones;
+    
+    //Array de almacenamiento de nombre de atracciones
+    string [] Atracciones;
+
+    // Mapping para relacionar una identidad (cliente) con su historial en Dinsey
+    mapping (address => string[]) HistorialAtracciones;
+
+    //Nos permite crear nuevas atracciones para Dinsey(Solo es ejecutado por Dinsey)
+    function NuevaAtraccion(string memory _nombreAtraccion, uint _precio) public Unicamente(msg.sender){
+        // Creacion de una atraccion en Dinsey
+        MappingAtracciones[_nombreAtraccion] = atraccion(_nombreAtraccion, _precio, true);
+        //Almacenar en un array el nomrbe de la atraccion
+        Atracciones.push(_nombreAtraccion);
+        //Emision del evento para la nueva atraccion
+        emit nueva_atraccion(_nombreAtraccion, _precio);
     }
 
 }

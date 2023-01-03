@@ -11,6 +11,51 @@
 				"type": "constructor"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "baja_atraccion",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "disfruta_attracciones",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "nueva_atraccion",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -56,6 +101,35 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "MappingAtracciones",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "nombre_atraccion",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "precio_atraccion",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "estado_atraccion",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "MisToken",
 				"outputs": [
@@ -66,6 +140,24 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_nombreAtraccion",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_precio",
+						"type": "uint256"
+					}
+				],
+				"name": "NuevaAtraccion",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -139,11 +231,11 @@
 			]
 		},
 		"Dinsey/dinsey.sol": {
-			"keccak256": "0x7fcabbb7c5b32e6a07bd9e3f24877938839584ef773deec577947220b465aa97",
+			"keccak256": "0x3ce1bf3246b961ad9d71c40274947bf16d0ad150ae0e5b1527498124217e2f68",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://b791a261a19ecf2f686273475433f7092529ffada2dacda8144ea3b523f89818",
-				"dweb:/ipfs/QmWuTQR6HySrsdgndDvYYVR74RqvjHhao1MiWca14mJrtc"
+				"bzz-raw://78beae486708bcf9cb22c00032434e9d329e5d3d5096074d360c520a19705b97",
+				"dweb:/ipfs/QmYKBejiSJkh6wahHjaQxCq1QmpUiPfhzXSwRzDLbn4ioE"
 			]
 		}
 	},
