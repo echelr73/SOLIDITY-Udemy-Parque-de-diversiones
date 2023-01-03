@@ -5,7 +5,7 @@ import "./ERC20.sol";
 
 contract Dinsey{
 
-    // ------------ DECLARACIONES INICIALES --------------------------
+    // ------------ DECLARACIONES INICIALES ------------------------
 
     // Instancia del contrato token
     ERC20Basic private token;

@@ -139,11 +139,11 @@
 			]
 		},
 		"Dinsey/dinsey.sol": {
-			"keccak256": "0x436badbb6d9734c08aa23018fab555c34565032e6cd1e0a325ed8613d498ef9d",
+			"keccak256": "0x7fcabbb7c5b32e6a07bd9e3f24877938839584ef773deec577947220b465aa97",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://59d0e90c8150921459e28933856b6ab88c7fcac4c2edc79e9dfadd366f340a82",
-				"dweb:/ipfs/Qmdt2PtiDc1nfvAMyNUebgFiZX252kC1CEWMDEp31pHG5Y"
+				"bzz-raw://b791a261a19ecf2f686273475433f7092529ffada2dacda8144ea3b523f89818",
+				"dweb:/ipfs/QmWuTQR6HySrsdgndDvYYVR74RqvjHhao1MiWca14mJrtc"
 			]
 		}
 	},
