@@ -107,4 +107,12 @@ contract Dinsey{
         emit nueva_atraccion(_nombreAtraccion, _precio);
     }
 
+    //Dar de baja una atracciones en Dinsey (Deberia mejorarse para que sole se de baja a atracciones existentes
+    function BajaAtraccion(string memory _nombreAtraccion) public Unicamente(msg.sender){
+        //El estado de la atraccion pasa a FALSE 
+        MappingAtracciones[_nombreAtraccion].estado_atraccion = false;
+        //Emitir el evento de baja de atracciones
+        emit baja_atraccion(_nombreAtraccion);
+    }
+
 }

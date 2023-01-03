@@ -58,6 +58,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "string",
+						"name": "_nombreAtraccion",
+						"type": "string"
+					}
+				],
+				"name": "BajaAtraccion",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
@@ -231,11 +244,11 @@
 			]
 		},
 		"Dinsey/dinsey.sol": {
-			"keccak256": "0x3ce1bf3246b961ad9d71c40274947bf16d0ad150ae0e5b1527498124217e2f68",
+			"keccak256": "0x44789fbce3893ce31f2ec6fdd136fc2c8ca28c97fa6d22c756d952047065a340",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://78beae486708bcf9cb22c00032434e9d329e5d3d5096074d360c520a19705b97",
-				"dweb:/ipfs/QmYKBejiSJkh6wahHjaQxCq1QmpUiPfhzXSwRzDLbn4ioE"
+				"bzz-raw://219e0f8aa234338d87b5f1aee222c567a75941acc4129a014e596b5e0ed278cb",
+				"dweb:/ipfs/QmQW8x9P2cBx8egNLB3hJuGvCZuMNkAEn4qcMjcxBiCjeA"
 			]
 		}
 	},
